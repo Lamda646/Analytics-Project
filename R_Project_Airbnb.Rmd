@@ -1,0 +1,285 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+library(shiny)
+library(dplyr)
+library(DT)
+library(lubridate)
+```
+
+
+#To Load the Data
+
+```{r}
+load('C:....AirBnB.Rdata')
+```
+
+
+# To filter only Paris Data 
+```{r}
+paris_data <- subset(L, grepl("Paris", city, ignore.case = TRUE))
+
+```
+
+# To filter only "Apartment"
+```{r}
+apartment_data <- paris_data[paris_data$property_type == 'Apartment',]
+```
+
+
+
+# Here we are removing the "$" symbol from the "price", "weekly_price", "monthly_price" columns, and converting them to numeric
+```{r}
+apartment_data$price <- as.numeric(gsub('\\$|,', '', apartment_data$price))
+apartment_data$weekly_price <- as.numeric(gsub('\\$|,', '', apartment_data$weekly_price))
+apartment_data$monthly_price <- as.numeric(gsub('\\$|,', '', apartment_data$monthly_price))
+```
+
+
+
+#checking if there are any NA values in price, weekly_price and monthly_price
+
+```{r}
+sum(is.na(apartment_data$price))
+sum(is.na(apartment_data$weekly_price))
+sum(is.na(apartment_data$monthly_price))
+```
+
+
+
+
+
+#To fill the mean values for NA values in "price" column
+```{r}
+for (i in 1:length(apartment_data$price)) {
+  if (is.na(apartment_data$price[i])) {
+    sel <- !is.na(apartment_data$price)  
+    m <- mean(apartment_data$price[sel], na.rm = TRUE)  
+    apartment_data$price[i] <- m  
+  }
+}
+sum(is.na(apartment_data$price))
+```
+
+
+# To find the minimum and maximum values in the "price" column
+
+```{r}
+min_price <- min(apartment_data$price)
+max_price <- max(apartment_data$price)
+min_price
+max_price
+```
+
+# To fill the mean values for NA values in "weekly_price" column
+
+
+```{r}
+for (i in 1:length(apartment_data$weekly_price)) {
+  if (is.na(apartment_data$weekly_price[i])) {
+    sel <- !is.na(apartment_data$weekly_price)  
+    m <- mean(apartment_data$weekly_price[sel], na.rm = TRUE)  
+    apartment_data$weekly_price[i] <- m  
+  }
+}
+sum(is.na(apartment_data$weekly_price))
+
+```
+
+# To find the minimum and maximum values in the "weekly_price" column
+
+```{r}
+min_weekly_price <- min(apartment_data$weekly_price)
+max_weekly_price <- max(apartment_data$weekly_price)
+min_weekly_price
+max_weekly_price
+```
+
+
+# To fill the mean values for NA values in "monthly_price" column
+
+
+```{r}
+for (i in 1:length(apartment_data$monthly_price)) {
+  if (is.na(apartment_data$monthly_price[i])) {
+    sel <- !is.na(apartment_data$monthly_price)  
+    m <- mean(apartment_data$monthly_price[sel], na.rm = TRUE)  
+    apartment_data$monthly_price[i] <- m  
+  }
+}
+sum(is.na(apartment_data$monthly_price))
+
+```
+
+
+# To find the minimum and maximum values in the "monthly_price" column
+
+```{r}
+min_monthly_price <- min(apartment_data$monthly_price)
+max_monthly_price <- max(apartment_data$monthly_price)
+min_monthly_price
+max_monthly_price
+```
+
+
+
+#To check NA values in the column "bedrooms"
+```{r}
+sum(is.na(apartment_data$bedrooms))
+```
+
+
+
+# To fill NA values in the column "bedrooms"
+```{r}
+for (i in 1:length(apartment_data$bedrooms)) {
+  if (is.na(apartment_data$bedrooms[i])) {
+    sel <- !is.na(apartment_data$bedrooms)  
+    m <- mean(apartment_data$bedrooms[sel], na.rm = TRUE)  
+    rounded_mean <- ceiling (m)
+    apartment_data$bedrooms[i] <- rounded_mean
+  }
+}
+sum(is.na(apartment_data$bedrooms))
+```
+
+# To find min and max in the column "bedrooms"
+
+```{r}
+min_bdrms<- min(apartment_data$bedrooms)
+max_bdrms<-max(apartment_data$bedrooms)
+min_bdrms
+max_bdrms
+```
+
+
+
+#To check NA values in the column "bathrooms"
+
+```{r}
+sum(is.na(apartment_data$bathrooms))
+```
+
+
+
+
+
+# To fill NA values in the column "bathrooms"
+
+```{r}
+for (i in 1:length(apartment_data$bathrooms)) {
+  if (is.na(apartment_data$bathrooms[i])) {
+    sel <- !is.na(apartment_data$bathrooms)  # Select non-NA values
+    m <- mean(apartment_data$bathrooms[sel], na.rm = TRUE)  # Calculate the mean of non-NA values
+    rounded_mean <- ceiling (m)
+    apartment_data$bathrooms[i] <- rounded_mean  # Replace NA with the calculated mean
+  }
+}
+sum(is.na(apartment_data$bathrooms))
+```
+
+#To check min and max values in the column "bathrooms"
+```{r}
+min_bthrms <- min(apartment_data$bathrooms)
+max_bthrms <- max(apartment_data$bathrooms)
+min_bthrms
+max_bthrms
+```
+
+
+#To check if there any NA values in the column "accommodates"
+```{r}
+sum(is.na(apartment_data$accommodates))
+```
+
+#To check if there are any NA values in the column "beds"
+```{r}
+sum(is.na(apartment_data$beds))
+```
+
+
+# To fill NA values in the column "beds"
+
+```{r}
+for (i in 1:length(apartment_data$beds)) {
+  if (is.na(apartment_data$beds[i])) {
+    sel <- !is.na(apartment_data$beds)  # Select non-NA values
+    m <- mean(apartment_data$beds[sel], na.rm = TRUE) # Calculate the mean of non-NA values
+    rounded_mean <- ceiling (m)
+    apartment_data$beds[i] <- rounded_mean # Replace NA with the calculated mean
+  }
+}
+sum(is.na(apartment_data$beds))
+```
+
+
+# To find min and max value in the column "beds"
+```{r}
+min_beds<-min(apartment_data$beds)
+max_beds<-max(apartment_data$beds)
+min_beds
+max_beds
+
+```
+
+# selecting only columns zipcode and price to calculate renting price per city quarter ("arrondissments")
+
+```{r}
+arr_df <- apartment_data[, c("zipcode", "price")]
+```
+
+# Here we are grouping the data according to the zipcode, and taking average mean of price for the particular zipcode
+
+```{r}
+zipcode_counts <- arr_df %>%
+  group_by(zipcode) %>%
+  summarise(count = n(), average_price = mean(price, na.rm = TRUE))
+  average_price<-as.numeric(arr_df$average_price)
+  
+```
+
+
+#Here we are giving the name arrondissments to the respective zipcode(eg:75001 will have arrondissment 1..... 75020 will have arrondisment 20)
+
+```{r}
+valid_zipcodes <- as.character(75001:75020)
+
+arrondiss_zipcode <- zipcode_counts %>%
+  filter(zipcode %in% valid_zipcodes) %>%
+  mutate(Arrondissements = as.numeric(substring(zipcode, 4)))
+
+
+
+```
+
+
+# Here we are converting 'date' column to date format
+```{r}
+
+R$date <- as.Date(R$date)
+```
+
+# Here we are categorizing the dates into quarter 
+```{r}
+R$quarter <- quarter(R$date)
+```
+
+# Here we are calculating the visiting frequency per quarter
+```{r}
+visit_freq <- R %>%
+  group_by( quarter) %>%
+  summarise(visit_count = n())
+
+visit_freq
+
+```
+
+
+
+
+
+
