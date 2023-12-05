@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language_Holiday_Agency xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XML_projectschema.xsd">
+	<Language_Holiday_Program Program ="1">
+		<Location>Paris</Location>
+		
+		<Date>2023-06-01</Date>
+		
+		<Course idref="C01"/>
+		
+		<Language idref="Lang01"/>
+		
+		<Level idref="L01"/>
+		<Exam idref="E01"/>
+		<Course_Level>
+			<CL_Courseid C="C01"/>
+			<CL_Languageid La="Lang01"/>
+			<CL_Levelid L="L01"/>
+		</Course_Level>
+		<Course_Exam>
+			<CE_Courseid C="C01"/>
+			<CE_Languageid La="Lang01"/>
+			<CE_Examid E="E01"/>
+		</Course_Exam>
+		<Discount idref="D01"/>
+		<Price idref="Pr01"/>
+		<Modified_Prices>
+			<MF_Discountid D="D01"/>
+			<MF_Priceid Pr="Pr01"/>
+		</Modified_Prices>
+		<Client idref ="Ci01">
+			<Cl_Isactive>1</Cl_Isactive>
+			<Cl_Login>peter640</Cl_Login>
+			<Cl_Password>Ihate@work</Cl_Password>
+		</Client>
+		<Teacher idref ="T01">
+			<Te_Isactive>1</Te_Isactive>
+			<Te_Login>Iamfrenchteacher</Te_Login>
+			<Te_Password>Ilovefrench</Te_Password>
+		</Teacher>
+		<Course_Clientinfo>
+			<CC_Clientid Ci="Ci01"/>
+			<CC_Courseid C="C01"/>
+		</Course_Clientinfo>
+		<Course_Teacherinfo>
+			<CT_Teacherid T="T01"/>
+			<CT_Courseid C="C01"/>
+		</Course_Teacherinfo>
+		
+		<Socialmedia idref="S01">
+			<Sm_Description>It was great being a part of Language Holiday Program</Sm_Description>
+		</Socialmedia>
+		<Testimonial>
+			<Testimonial_Clientid Ci="Ci01"/>
+			<Socialmediaid S="S01"/>
+			<Comments>Good</Comments>
+			<Testimonial_Photo>picture</Testimonial_Photo>
+			<Rating_outof5>4.0</Rating_outof5>
+		</Testimonial>
+	
+	</Language_Holiday_Program>
+	
+	
+	<Language_Holiday_Program Program="2">
+		<Location>Lyon</Location>
+		<Date>2023-07-01</Date>
+		<Course idref="C02"/>
+		<Language idref="Lang02"/>
+		<Level idref="L02"/>
+		<Exam idref="E02"/>
+		<Course_Level>
+			<CL_Courseid C="C02"/>
+			<CL_Languageid La="Lang02"/>
+			<CL_Levelid L="L02"/>
+		</Course_Level>
+		<Course_Exam>
+			<CE_Courseid C="C02"/>
+			<CE_Languageid La="Lang02"/>
+			<CE_Examid E="E02"/>
+		</Course_Exam>
+		<Discount idref="D02"/>
+		<Price idref="Pr02"/>
+		<Modified_Prices>
+			<MF_Discountid D="D02"/>
+			<MF_Priceid Pr="Pr02"/>
+		</Modified_Prices>
+		<Client idref ="Ci02">
+			<Cl_Isactive>1</Cl_Isactive>
+			<Cl_Login>Json840</Cl_Login>
+			<Cl_Password>Ilove@work</Cl_Password>
+			
+		</Client>
+		<Teacher idref ="T01">
+			<Te_Isactive>1</Te_Isactive>
+			<Te_Login>Iamenglishteacher</Te_Login>
+			<Te_Password>Iloveenglish</Te_Password>
+		</Teacher>
+		<Course_Clientinfo>
+			<CC_Clientid Ci="Ci02"/>
+			<CC_Courseid C="C02"/>
+		</Course_Clientinfo>
+		<Course_Teacherinfo>
+			<CT_Teacherid T="T01"/>
+			<CT_Courseid C="C01"/>
+		</Course_Teacherinfo>
+		<Socialmedia idref="S02">
+			<Sm_Description>Improved my language skills after attending programs in Language Holiday Programs</Sm_Description>
+		</Socialmedia>
+		<Testimonial>
+			<Testimonial_Clientid Ci="Ci02"/>
+			<Socialmediaid S="S01"/>
+			<Comments>Good</Comments>
+			<Testimonial_Photo>Picture</Testimonial_Photo>
+			<Rating_outof5>4.5</Rating_outof5>
+		</Testimonial>
+	
+	</Language_Holiday_Program>
+	
+	
+	<Course_details id="C01">
+		<Course_name>Child With Parent</Course_name>
+		<Age>3 Years to 5 Years</Age>
+		<Duration>20 weeks</Duration>
+		<Days>Monday, Thursday</Days>
+		<Start_Time>09:00:00</Start_Time>
+		<End_Time>11:30:00</End_Time>
+		<Activities>Stories,Songs,Playing,Crafts </Activities>
+	</Course_details>
+	
+	<Course_details id="C02">
+		<Course_name>Summer Camps</Course_name>
+		<Age>5 Years to 12 Years</Age>
+		<Duration>30 Days</Duration>
+		<Days>Monday to Friday</Days>
+		<Start_Time>08:00:00</Start_Time>
+		<End_Time>04:30:00</End_Time>
+		<Activities>Water Activities,Art,Sports,Indoor Games,Field Trips,Camping,Music and Movies</Activities>
+	</Course_details>
+	
+	<Course_details id="C03">
+		<Course_name>Teens Program</Course_name>
+		<Age>13 Years to 19 Years</Age>
+		<Duration>12 Weeks</Duration>
+		<Days>Monday to Friday</Days>
+		<Start_Time>08:00:00</Start_Time>
+		<End_Time>04:30:00</End_Time>
+		<Activities>Cultural Activities, Language Exchange with local students, Weekend and City excursions, Watching movies with transcription
+					,Listening to Podcasts, Farewell dinner </Activities>
+	</Course_details>
+	
+	<Course_details id="C04">
+		<Course_name>Day Camps</Course_name>
+		<Age>12 Years to 15 Years</Age>
+		<Duration>12 Weeks</Duration>
+		<Days>During School Vacation</Days>
+		<Start_Time>08:00:00</Start_Time>
+		<End_Time>05:00:00</End_Time>
+		<Activities>Musical, Cultural Activities, Scientific Activities, Public Speaking, Creative Writing, Excursions, Group Activities </Activities>
+	</Course_details>
+	
+	<Language_details id="Lang01">
+		<Language_Desc>French</Language_Desc>
+	</Language_details>
+	<Language_details  id="Lang02">
+		<Language_Desc>English</Language_Desc>
+	</Language_details >
+	<Language_details  id="Lang03">
+		<Language_Desc>German</Language_Desc>
+	</Language_details >
+	<Language_details  id="Lang04">
+		<Language_Desc>Italian</Language_Desc>
+	</Language_details >
+	<Language_details  id="Lang05">
+		<Language_Desc>Spanish</Language_Desc>
+	</Language_details >
+	<Level_details  id="L01">
+		<Level_Desc>Beginner</Level_Desc>
+	</Level_details >
+	<Level_details  id="L02">
+		<Level_Desc>Intermediate</Level_Desc>
+	</Level_details >
+	<Level_details  id="L03">
+		<Level_Desc>Advanced</Level_Desc>
+	</Level_details >
+	<Exam_details  id="E01">
+		<Exam_Desc>Exam Level A1</Exam_Desc>
+	</Exam_details >
+	<Exam_details id="E02">
+		<Exam_Desc>Exam Level A2</Exam_Desc>
+	</Exam_details >
+	<Exam_details id="E03">
+		<Exam_Desc>Exam Level B1</Exam_Desc>
+	</Exam_details >
+	<Exam_details  id="E04">
+		<Exam_Desc>Exam Level B2</Exam_Desc>
+	</Exam_details >
+	<Exam_details  id="E05">
+		<Exam_Desc>Exam Level C1</Exam_Desc>
+	</Exam_details >
+	<Exam_details  id="E06">
+		<Exam_Desc>Exam Level C2</Exam_Desc>
+	</Exam_details >
+	<Discount_details  id="D01">
+		<Discount_Percentage>10%</Discount_Percentage>
+		<Discount_Desc>Two kids enrolled</Discount_Desc>
+		
+	</Discount_details >
+	<Discount_details id="D02">
+		<Discount_Percentage>5%</Discount_Percentage>
+		<Discount_Desc>Early Registration</Discount_Desc>
+	</Discount_details>
+	<Price_details  id="Pr01">
+		<Total_Price>300.00</Total_Price>
+	</Price_details >
+	<Price_details  id="Pr02">
+		<Total_Price>150.00</Total_Price>
+	</Price_details >
+	<Client_details  id="Ci01">
+		<Firstname>John</Firstname>
+		<Lastname>Peter</Lastname>
+		<Zipcode>70123</Zipcode>
+		<Street>Faubourg de france</Street>
+		<City>Paris</City>
+		<Nationality>French</Nationality>
+		<Email>johnpeter@outlook.com</Email>
+		<Contact>3456789</Contact>
+		<Payment_type>Credit card</Payment_type>
+		<Receipt>Given</Receipt>
+	</Client_details>
+	<Client_details  id="Ci02">
+		<Firstname>Json</Firstname>
+		<Lastname>Paul</Lastname>
+		<Zipcode>75003</Zipcode>
+		<Street>Faubourg de Montebeliard</Street>
+		<City>Paris</City>
+		<Nationality>German</Nationality>
+		<Email>jsonpaul@outlook.com</Email>
+		<Contact>789101112</Contact>
+		<Payment_type>Credit card</Payment_type>
+		<Receipt>Given</Receipt>
+	</Client_details>
+	<Teacher_details  id="T01">
+		<Teach_Firstname>Liliana</Teach_Firstname>
+		<Teach_Lastname>Bond</Teach_Lastname>
+		<Teach_Description>C2 Certified Teacher with 12 years of experience</Teach_Description>
+		<Teach_Photo>Image</Teach_Photo>
+	</Teacher_details >
+	<Teacher_details  id="T02">
+		<Teach_Firstname>Eloise</Teach_Firstname>
+		<Teach_Lastname>Todd</Teach_Lastname>
+		<Teach_Description>C2 Certified Teacher with 10 years of experience</Teach_Description>
+		<Teach_Photo>Image</Teach_Photo>
+	</Teacher_details >
+	<Socialmedia_details  id="S01">
+		<Socialmedia_Desc>Facebook</Socialmedia_Desc>
+	</Socialmedia_details >
+	<Socialmedia_details  id="S02">
+		<Socialmedia_Desc>Instagram</Socialmedia_Desc>
+	</Socialmedia_details >
+	<Socialmedia_details  id="S03">
+		<Socialmedia_Desc>Twitter</Socialmedia_Desc>
+	</Socialmedia_details >
+	
+
+
+</Language_Holiday_Agency>

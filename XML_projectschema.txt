@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Language_Holiday_Agency">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Language_Holiday_Program"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Course_details"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Language_details"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Level_details"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Exam_details"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Discount_details"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Price_details"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Client_details"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Teacher_details"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="Socialmedia_details"/>
+			
+		
+			</xs:sequence>
+		</xs:complexType>
+		<xs:key name="Coursedetails">
+			<xs:selector xpath="Course_details"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		<xs:keyref name="Courselevelcourseid" refer="Coursedetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Level/CL_Courseid"/>
+			<xs:field xpath="@C"/>
+		</xs:keyref>
+		<xs:keyref name="Courseexamcourseid" refer="Coursedetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Exam/Courseid"/>
+			<xs:field xpath="@C"/>
+		</xs:keyref>
+		<xs:keyref name="Courseclientinfocourseid" refer="Coursedetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Clientinfo/Courseid"/>
+			<xs:field xpath="@C"/>
+		</xs:keyref>
+		<xs:keyref name="Courseteacherinfocourseid" refer="Coursedetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Teacherinfo/Courseid"/>
+			<xs:field xpath="@C"/>
+		</xs:keyref>
+		<xs:keyref name="Courseinfo" refer="Coursedetails">
+			<xs:selector xpath="Language_Holiday_Program/Course"/>
+			<xs:field xpath="idref" />
+		</xs:keyref>
+		<xs:key name="Languagedetails">
+			<xs:selector xpath="Language_details"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		
+		<xs:keyref name="CourseLevellangid" refer="Languagedetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Level/CL_Languageid"/>
+			<xs:field xpath="@Lang"/>
+		</xs:keyref>
+		
+		<xs:keyref name="Courseexamlangid" refer="Languagedetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Exam/CE_Languageid"/>
+			<xs:field xpath="@Lang"/>
+		</xs:keyref>
+		
+		
+		<xs:keyref name="Languageinfo" refer="Languagedetails">
+			<xs:selector xpath="Language_Holiday_Program/Language"/>
+			<xs:field xpath="idref"/>
+		</xs:keyref>
+		<xs:key name="Leveldetails">
+			<xs:selector xpath="Level_details"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		<xs:keyref name="Courselevellevelid" refer="Leveldetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Level/Levelid"/>
+			<xs:field xpath="@L"/>
+		</xs:keyref>
+		<xs:keyref name="Levelinfo" refer="Leveldetails">
+			<xs:selector xpath="Language_Holiday_Program/Level"/>
+			<xs:field xpath="idref"/>
+		</xs:keyref>
+		<xs:key name="Examdetails">
+			<xs:selector xpath="Exam_details"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		<xs:keyref name="Courseexamexamid" refer="Examdetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Exam/Examid"/>
+			<xs:field xpath="@E"/>
+		</xs:keyref>	
+		<xs:keyref name="Examinfo" refer="Examdetails">
+			<xs:selector xpath="Language_Holiday_Program/Exam"/>
+			<xs:field xpath="idref"/>
+		</xs:keyref>
+		<xs:key name="Discountdetails">
+			<xs:selector xpath="Discount_details"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+			
+		<xs:keyref name="Modifiedpricesdiscountid" refer="Discountdetails">
+			<xs:selector xpath="Language_Holiday_Program/Modified_Prices/MF_Discountid"/>
+			<xs:field xpath="@D"/>
+		</xs:keyref>
+		<xs:keyref name="Discountinfo" refer="Discountdetails">
+			<xs:selector xpath="Language_Holiday_Program/Discount"/>
+			<xs:field xpath="idref"/>
+		</xs:keyref>
+		<xs:key name="Pricedetails">
+			<xs:selector xpath="Price_details"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		<xs:keyref name="Modifiedpricespriceid" refer="Pricedetails">
+			<xs:selector xpath="Language_Holiday_Program/Modified_Prices/MF_Priceid"/>
+			<xs:field xpath="@Pr"/>
+		</xs:keyref>
+		<xs:keyref name="Priceinfo" refer="Pricedetails">
+			<xs:selector xpath="Language_Holiday_Program/Price"/>
+			<xs:field xpath="idref"/>
+		</xs:keyref>
+		<xs:key name="Clientdetails">
+			<xs:selector xpath="Client_details"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		
+		<xs:keyref name="Courseclientinfoclientid" refer="Clientdetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Clientinfo/Clientid"/>
+			<xs:field xpath="@Ci"/>
+		</xs:keyref>
+		
+		<xs:keyref name="Testimonialclientid" refer="Clientdetails">
+			<xs:selector xpath="Language_Holiday_Program/Testimonial/Clientid"/>
+			<xs:field xpath="@Ci"/>
+		</xs:keyref>
+		
+		<xs:keyref name="Clientinfo" refer="Clientdetails">
+			<xs:selector xpath="Language_Holiday_Program/Client"/>
+			<xs:field xpath="idref"/>
+		</xs:keyref>
+		
+		<xs:key name="Teacherdetails">
+			<xs:selector xpath="Teacher_details"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		
+		<xs:keyref name="Courseteacherinfoteacherid" refer="Teacherdetails">
+			<xs:selector xpath="Language_Holiday_Program/Course_Teacherinfo/Teacherid"/>
+			<xs:field xpath="@T"/>
+		</xs:keyref>
+		
+		<xs:keyref name="Teacherinfo" refer="Teacherdetails">
+			<xs:selector xpath="Language_Holiday_Program/Teacher"/>
+			<xs:field xpath="idref"/>	
+		</xs:keyref>
+		<xs:key name="Socialmediadetails">
+			<xs:selector xpath="Socialmedia_details"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		
+		<xs:keyref name="TestimonialSocialmediaid" refer="Socialmediadetails">
+			<xs:selector xpath="Language_Holiday_Program/Testimonial/Socialmediaid"/>
+			<xs:field xpath="@S"/>
+		</xs:keyref>
+		
+		<xs:keyref name="Socialmediainfo" refer="Socialmediadetails">
+			<xs:selector xpath="Language_Holiday_Program/Socialmedia"/>
+			<xs:field xpath="idref"/>
+		</xs:keyref>
+	</xs:element>
+	<xs:element name="Language_Holiday_Program">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Location"/>
+				<xs:element ref="Date"/>
+				<xs:element ref="Course"/>
+				<xs:element ref="Language"/>
+				<xs:element ref="Level"/>
+				<xs:element ref="Exam"/>
+				<xs:element ref="Course_Level"/>
+				<xs:element ref="Course_Exam"/>
+				<xs:element ref="Discount"/>
+				<xs:element ref="Price"/>
+				<xs:element ref="Modified_Prices"/>
+				<xs:element ref="Client"/>
+				<xs:element ref="Teacher"/>
+				<xs:element ref="Course_Clientinfo"/>
+				<xs:element ref="Course_Teacherinfo"/>
+				<xs:element ref="Socialmedia"/>
+				<xs:element ref="Testimonial"/>
+			</xs:sequence>
+			<xs:attribute name="Program" use="required" type="xs:integer"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Location" type="xs:string"/>
+	<xs:element name="Date" type="xs:date"/>
+	<xs:element name="Course">
+		<xs:complexType>
+			<xs:attribute name="idref" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Language">
+		<xs:complexType>
+			<xs:attribute name="idref" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Level">
+		<xs:complexType>
+			<xs:attribute name="idref" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Exam">
+		<xs:complexType>
+			<xs:attribute name="idref" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Course_Level">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CL_Courseid"/>
+				<xs:element ref="CL_Languageid"/>
+				<xs:element ref="CL_Levelid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CL_Courseid">	
+		<xs:complexType>
+			<xs:attribute name="C" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CL_Languageid">	
+		<xs:complexType>
+			<xs:attribute name="La" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CL_Levelid">	
+		<xs:complexType>
+			<xs:attribute name="L" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Course_Exam">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CE_Courseid"/>
+				<xs:element ref="CE_Languageid"/>
+				<xs:element ref="CE_Examid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CE_Courseid">	
+		<xs:complexType>
+			<xs:attribute name="C" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CE_Languageid">	
+		<xs:complexType>
+			<xs:attribute name="La" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CE_Examid">	
+		<xs:complexType>
+			<xs:attribute name="E" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Discount">
+		<xs:complexType>
+			<xs:attribute name="idref" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Price">
+		<xs:complexType>
+			<xs:attribute name="idref" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Modified_Prices">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="MF_Discountid"/>
+				<xs:element ref="MF_Priceid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MF_Discountid">	
+		<xs:complexType>
+			<xs:attribute name="D" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MF_Priceid">	
+		<xs:complexType>
+			<xs:attribute name="Pr" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Client">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Cl_Isactive"/>
+				<xs:element ref="Cl_Login"/>
+				<xs:element ref="Cl_Password"/>
+			</xs:sequence>
+			<xs:attribute name="idref" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Cl_Isactive" type="xs:boolean"/>
+	<xs:element name="Cl_Login" type="xs:string"/>
+	<xs:element name="Cl_Password" type="xs:string"/>
+	<xs:element name="Teacher">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Te_Isactive"/>
+				<xs:element ref="Te_Login"/>
+				<xs:element ref="Te_Password"/>
+			</xs:sequence>
+			<xs:attribute name="idref" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Te_Isactive" type="xs:boolean"/>
+	<xs:element name="Te_Login" type="xs:string"/>
+	<xs:element name="Te_Password" type="xs:string"/>
+	<xs:element name="Course_Clientinfo">	
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CC_Clientid"/>
+				<xs:element ref="CC_Courseid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CC_Clientid">	
+		<xs:complexType>
+			<xs:attribute name="Ci" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CC_Courseid">	
+		<xs:complexType>
+			<xs:attribute name="C" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Course_Teacherinfo">	
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CT_Teacherid"/>
+				<xs:element ref="CT_Courseid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CT_Teacherid">	
+		<xs:complexType>
+			<xs:attribute name="T" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CT_Courseid">	
+		<xs:complexType>
+			<xs:attribute name="C" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Socialmedia">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Sm_Description"/>
+			</xs:sequence>
+			<xs:attribute name="idref" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Sm_Description" type="xs:string"/>
+	<xs:element name="Testimonial">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Testimonial_Clientid"/>
+				<xs:element ref="Socialmediaid"/>
+				<xs:element ref="Comments"/>
+				<xs:element ref="Testimonial_Photo"/>
+				<xs:element ref="Rating_outof5"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Testimonial_Clientid">
+		<xs:complexType>
+			<xs:attribute name="Ci" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Socialmediaid">
+		<xs:complexType>
+			<xs:attribute name="S" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Comments" type="xs:string"/>
+	<xs:element name="Testimonial_Photo" type="xs:string"/>
+	<xs:element name="Rating_outof5" type="xs:string"/>
+	<xs:element name="Course_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Course_name"/>
+				<xs:element ref="Age"/>
+				<xs:element ref="Duration"/>
+				<xs:element ref="Days"/>
+				<xs:element ref="Start_Time"/>
+				<xs:element ref="End_Time"/>
+				<xs:element ref="Activities"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Course_name" type="xs:string"/>
+	<xs:element name="Age" type="xs:string"/>
+	<xs:element name="Duration" type="xs:string"/>
+	<xs:element name="Days" type="xs:string"/>
+	<xs:element name="Start_Time" type="xs:time"/>
+	<xs:element name="End_Time" type="xs:time"/>
+	<xs:element name="Activities" type="xs:string"/>
+	
+	<xs:element name="Language_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Language_Desc"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Language_Desc" type="xs:string"/>
+	
+	<xs:element name="Level_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Level_Desc"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Level_Desc" type="xs:string"/>
+	
+	<xs:element name="Exam_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Exam_Desc"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Exam_Desc" type="xs:string"/>
+	
+	<xs:element name="Discount_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Discount_Percentage"/>
+				<xs:element ref="Discount_Desc"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Discount_Percentage" type="xs:string"/>
+	<xs:element name="Discount_Desc" type="xs:string"/>
+	
+	<xs:element name="Price_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Total_Price"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Total_Price" type="xs:string"/>
+	
+	<xs:element name="Client_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Firstname"/>
+				<xs:element ref="Lastname"/>
+				<xs:element ref="Zipcode"/>
+				<xs:element ref="Street"/>
+				<xs:element ref="City"/>
+				<xs:element ref="Nationality"/>
+				<xs:element ref="Email"/>	
+				<xs:element ref="Contact"/>
+				<xs:element ref="Payment_type"/>
+				<xs:element ref="Receipt"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Firstname" type="xs:string"/>
+	<xs:element name="Lastname" type="xs:string"/>
+	<xs:element name="Zipcode" type="xs:string"/>
+	<xs:element name="Street" type="xs:string"/>
+	<xs:element name="City" type="xs:string"/>
+	<xs:element name="Email" type="xs:string"/>
+	<xs:element name="Contact" type="xs:string"/>
+	<xs:element name="Payment_type" type="xs:string"/>
+	<xs:element name="Receipt" type="xs:string"/>
+	<xs:element name="Nationality" type="xs:string"/>
+		
+	<xs:element name="Teacher_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Teach_Firstname"/>
+				<xs:element ref="Teach_Lastname"/>
+				<xs:element ref="Teach_Description"/>
+				<xs:element ref="Teach_Photo"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Teach_Firstname" type="xs:string"/>
+	<xs:element name="Teach_Lastname" type="xs:string"/>
+	<xs:element name="Teach_Description" type="xs:string"/>
+	<xs:element name="Teach_Photo" type="xs:string"/>
+	
+	<xs:element name="Socialmedia_details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Socialmedia_Desc"/>
+			</xs:sequence>
+			<xs:attribute name="id" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Socialmedia_Desc" type="xs:string"/>
+	
+</xs:schema>
